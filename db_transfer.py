@@ -92,23 +92,23 @@ class DbTransfer(object):
 
             alive_user_count = alive_user_count + 1
 
-            cur = conn.cursor()
-            cur.execute("INSERT INTO `user_traffic_log` (`id`, `user_id`, `u`, `d`, `Node_ID`, `rate`, `traffic`, `log_time`) VALUES (NULL, '" +
-                        str(self.port_uid_table[id]) +
-                        "', '" +
-                        str(dt_transfer[id][0]) +
-                        "', '" +
-                        str(dt_transfer[id][1]) +
-                        "', '" +
-                        str(get_config().NODE_ID) +
-                        "', '" +
-                        str(self.traffic_rate) +
-                        "', '" +
-                        self.trafficShow((dt_transfer[id][0] +
-                                          dt_transfer[id][1]) *
-                                         self.traffic_rate) +
-                        "', unix_timestamp()); ")
-            cur.close()
+            # cur = conn.cursor()
+            # cur.execute("INSERT INTO `user_traffic_log` (`id`, `user_id`, `u`, `d`, `Node_ID`, `rate`, `traffic`, `log_time`) VALUES (NULL, '" +
+            #             str(self.port_uid_table[id]) +
+            #             "', '" +
+            #             str(dt_transfer[id][0]) +
+            #             "', '" +
+            #             str(dt_transfer[id][1]) +
+            #             "', '" +
+            #             str(get_config().NODE_ID) +
+            #             "', '" +
+            #             str(self.traffic_rate) +
+            #             "', '" +
+            #             self.trafficShow((dt_transfer[id][0] +
+            #                               dt_transfer[id][1]) *
+            #                              self.traffic_rate) +
+            #             "', unix_timestamp()); ")
+            # cur.close()
 
             bandwidth_thistime = bandwidth_thistime + \
                 (dt_transfer[id][0] + dt_transfer[id][1])
@@ -155,13 +155,13 @@ class DbTransfer(object):
                     get_config().NODE_ID) + "','" + str(self.port_uid_table[id]) + "', '" + str(ip) + "', unix_timestamp())")
                 cur.close()
 
-        detect_log_list = ServerPool.get_instance().get_servers_detect_log()
-        for port in detect_log_list.keys():
-            for rule_id in detect_log_list[port]:
-                cur = conn.cursor()
-                cur.execute("INSERT INTO `detect_log` (`id`, `user_id`, `list_id`, `datetime`, `node_id`) VALUES (NULL, '" + str(
-                    self.port_uid_table[port]) + "', '" + str(rule_id) + "', UNIX_TIMESTAMP(), '" + str(get_config().NODE_ID) + "')")
-                cur.close()
+        # detect_log_list = ServerPool.get_instance().get_servers_detect_log()
+        # for port in detect_log_list.keys():
+        #     for rule_id in detect_log_list[port]:
+        #         cur = conn.cursor()
+        #         cur.execute("INSERT INTO `detect_log` (`id`, `user_id`, `list_id`, `datetime`, `node_id`) VALUES (NULL, '" + str(
+        #             self.port_uid_table[port]) + "', '" + str(rule_id) + "', UNIX_TIMESTAMP(), '" + str(get_config().NODE_ID) + "')")
+        #         cur.close()
 
         deny_str = ""
         if platform.system() == 'Linux' and get_config().ANTISSATTACK == 1:

@@ -32,9 +32,6 @@ if __name__ == '__main__':
 import server_pool
 import db_transfer
 import web_transfer
-import speedtest_thread
-import auto_thread
-import auto_block
 from shadowsocks import shell
 from configloader import load_config, get_config
 
@@ -63,15 +60,6 @@ def main():
     else:
         threadMain = MainThread(db_transfer.DbTransfer)
     threadMain.start()
-
-    threadSpeedtest = MainThread(speedtest_thread.Speedtest)
-    threadSpeedtest.start()
-
-    threadAutoexec = MainThread(auto_thread.AutoExec)
-    threadAutoexec.start()
-
-    threadAutoblock = MainThread(auto_block.AutoBlock)
-    threadAutoblock.start()
 
     try:
         while threadMain.is_alive():
