@@ -44,7 +44,7 @@ RUN apk add --no-cache                          \
         linux-headers                        && \
     ln -s /usr/bin/python3 /usr/bin/python   && \
     ln -s /usr/bin/pip3    /usr/bin/pip      && \
-    cp  /usr/bin/envsubst  /usr/local/bin/   && \
+    cp /usr/bin/envsubst  /usr/local/bin/    && \
     pip install --upgrade pip                && \
     pip install -r requirements.txt          && \
     rm -rf ~/.cache && touch /etc/hosts.deny && \
