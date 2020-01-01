@@ -11,6 +11,7 @@ ANTISSATTACK = ${ANTISSATTACK}
 
 MU_SUFFIX = '${MU_SUFFIX}'
 MU_REGEX = '${MU_REGEX}'
+MYSQL_OFFSET = ${MYSQL_OFFSET}
 
 SERVER_PUB_ADDR = '127.0.0.1'  # mujson_mgr need this to generate ssr link
 API_INTERFACE = '${API_INTERFACE}'  # glzjinmod, modwebapi
